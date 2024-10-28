@@ -34,6 +34,9 @@ in
       age
       vesktop
       slack
+      dbeaver-bin
+      postman
+      xivlauncher
       ];
     };
     

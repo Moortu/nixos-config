@@ -180,7 +180,7 @@
     xdg-user-dirs
     xdg-utils
     vscodium
-    jetbrains.idea-ultimate
+    jetbrains-toolbox
     fastfetch
     micro
     dive
@@ -189,6 +189,7 @@
     inputs.zen-browser.packages."${system}".specific
     inputs.ghostty.packages."${system}".default
     (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+    vim
     #ranger
       
     # Hyprland Stuff
