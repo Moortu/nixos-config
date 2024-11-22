@@ -77,7 +77,6 @@
 
 
   # Extra Module Options
-  drivers.nvidia.enable = true;
   local.hardware-clock.enable = false;
 
   # networking
@@ -106,23 +105,23 @@
   nixpkgs.config.allowUnfree = true;
   
   programs = {
-	  hyprland = {
-      enable = true;
-		  package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-		  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
-  	  xwayland.enable = true;
-      };
+	hyprland = {
+    		enable = true;
+    		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
+		portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
+  	  	xwayland.enable = true;
+      	};
 
 	
-	  waybar.enable = true;
-	  hyprlock.enable = true;
-	  firefox.enable = true;
-	  git.enable = true;
-    nm-applet.indicator = true;
+	waybar.enable = true;
+	hyprlock.enable = true;
+	firefox.enable = true;
+	git.enable = true;
+    	nm-applet.indicator = true;
     #neovim.enable = true;
 
-	  thunar.enable = true;
-	  thunar.plugins = with pkgs.xfce; [
+	thunar.enable = true;
+	thunar.plugins = with pkgs.xfce; [
 		  exo
 		  mousepad
 		  thunar-archive-plugin
@@ -191,12 +190,17 @@
     (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
     vim
     #ranger
-      
+    nodejs_18
+    nodePackages.pnpm
+    (yarn.override { nodejs = nodejs_18; })  
+
+    maven
+    gnumake
     # Hyprland Stuff
     ags        
     btop
     brightnessctl # for brightness control
-    cava
+    #cava
     #cliphist
     eog
     gnome-system-monitor
@@ -316,16 +320,16 @@
     nfs.server.enable = false;
   
     openssh.enable = true;
-    flatpak.enable = false;
+    flatpak.enable = true;
 	
-  	blueman.enable = true;
+    blueman.enable = true;
   	
   	#hardware.openrgb.enable = true;
   	#hardware.openrgb.motherboard = "amd";
+    
+    fwupd.enable = true;
 
-	  fwupd.enable = true;
-
-	  upower.enable = true;
+    upower.enable = true;
     
     gnome.gnome-keyring.enable = true;
     

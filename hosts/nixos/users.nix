@@ -29,7 +29,8 @@ in
       terraform
       talosctl
       kubectl
-      helm
+      kubernetes-helm
+      pkgs.awscli2
       sops
       age
       vesktop
@@ -37,6 +38,8 @@ in
       dbeaver-bin
       postman
       xivlauncher
+      k9s
+      teams-for-linux 
       ];
     };
     
@@ -45,7 +48,12 @@ in
   
   environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [ fzf ]; 
-    
+  environment.sessionVariables = rec {
+    DOCKER_HOST = "unix:///run/user/$UID/podman/podman.sock";
+    TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "unix:///run/user/$UID/podman/podman.sock";
+    TESTCONTAINERS_RYUK_DISABLED = "true";
+  };
+  
   programs = {
   # Zsh configuration
 	  zsh = {
